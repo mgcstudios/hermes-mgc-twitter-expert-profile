@@ -1,6 +1,7 @@
 name: twitter-expert
-version: 1.0.0
-description: Twitter/X expert for mgcstudios. Manages company Twitter, creates content, builds community.
+version: 1.1.0
+description: Twitter/X expert for mgcstudios. Manages company Twitter, creates content,
+  builds community.
 author: mgcalvo
 license: MIT
 distribution_owned:
@@ -12,4 +13,4 @@ distribution_owned:
 - skills
 - cron
 source: git@github.com:mgcstudios/hermes-mgc-twitter-expert-profile.git
-installed_at: '2026-07-18T22:30:00+00:00'
+installed_at: '2026-07-18T23:36:03+00:00'
