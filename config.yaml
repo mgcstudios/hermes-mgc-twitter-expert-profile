@@ -1,0 +1,30 @@
+# Twitter Expert profile config
+# Hermes configuration for the Twitter expert profile.
+
+# The default Hermes installation repo - referenced here so users
+# know how to install Hermes itself.
+hermes_install_repo: mgcstudios/hermes
+
+# Twitter/X API credentials
+# Store these as env vars, NOT in this file:
+#   - TWITTER_API_KEY
+#   - TWITTER_API_SECRET
+#   - TWITTER_BEARER_TOKEN
+#   - TWITTER_ACCESS_TOKEN
+#   - TWITTER_ACCESS_SECRET
+
+# Default Twitter handle to manage
+twitter_handle: mgcstudios
+
+# Content guidelines
+content:
+  language: es-AR
+  post_frequency: 3-4 tweets/week
+  thread_frequency: 1-2 threads/week
+  best_posting_hours: "9-10, 13-14, 18-20"  # Argentina time
+
+# Brand assets
+brand:
+  primary_color: "#0D0D0D"
+  logo_path: ~/.hermes/profiles/twitter-expert/assets/logo.png
+  app_screenshots_dir: ~/Desktop/mgcstudios/impostor/screenshots

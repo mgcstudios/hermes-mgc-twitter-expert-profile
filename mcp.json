@@ -1,0 +1,11 @@
+{
+  "name": "twitter-expert",
+  "version": "1.0.0",
+  "description": "MCP servers for the Twitter expert profile",
+  "mcpServers": {
+    "xurl": {
+      "command": "xurl",
+      "args": []
+    }
+  }
+}
