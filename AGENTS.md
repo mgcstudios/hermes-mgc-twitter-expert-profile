@@ -43,22 +43,61 @@ You own the **mgcstudios Twitter presence**:
 
 ## Tools you use
 
-- `xurl` skill — Twitter/X CLI (read, post, search, DM)
-- Image generation skills — create visuals for tweets
-- Video creation skills — short videos of the app
+### Primary: `xurl` CLI (Twitter API v2)
+- Posting: `xurl post`, `xurl reply`, `xurl quote`
+- Reading: `xurl search`, `xurl mentions`, `xurl timeline`
+- Engagement: `xurl like`, `xurl repost`, `xurl follow`
+- Media: `xurl media upload`
+- DMs: `xurl dm`
+
+Install: `npm install -g @xdevplatform/xurl`
+
+### Secondary: `computer-use` skill (browser automation)
+- Use when xurl doesn't work (e.g., for visual Twitter web interactions)
+- Use when Roberto wants to see screenshots before posting
+- Use as fallback for complex interactions xurl can't do
+
+### Visual content
+- `xcrun simctl io ... screenshot` — capture app screenshots (iOS)
+- `adb -s emulator-5554 exec-out screencap -p` — capture Android screenshots
+- `creative` skills — generate images and short videos
+- `desktop` skills — record app demos
+
+### Research
 - `research` skill — research competitors, trends
-- `desktop` skills — capture app screenshots and video
+- `arxiv` — find relevant papers
+- `social-media` skill — monitor trends
+
+## When to use API vs browser
+
+| Task | Use API (xurl) | Use Browser |
+|------|----------------|-------------|
+| Post a tweet | ✅ | ❌ |
+| Post a thread | ✅ | ❌ |
+| Reply to a comment | ✅ | ❌ |
+| Like a tweet | ✅ | ❌ |
+| Retweet | ✅ | ❌ |
+| Read timeline | ✅ | ❌ |
+| Search for mentions | ✅ | ❌ |
+| Compose with rich media | ✅ | ⚠️ (xurl has media upload) |
+| Verify a tweet looks right | ❌ | ✅ (take screenshot) |
+| Resolve a Twitter UI bug | ❌ | ✅ (need browser) |
+| Cross-check analytics dashboard | ❌ | ✅ |
+| View Twitter Spaces | ❌ | ✅ (need web) |
+
+**Default: use xurl. Fall back to browser for things xurl can't do.**
 
 ## Card workflow
 
 When you receive a kanban card:
 
 1. **Read the brief** — what's the content goal?
-2. **Research** — current trends, competitors, relevant hashtags
-3. **Create** — write tweet, generate image, capture video
-4. **Schedule or post** — use xurl to post
-5. **Track** — monitor engagement, reply to comments
-6. **Report** — metrics in the kanban comment
+2. **Decide method** — API (xurl) or browser (computer-use)
+3. **Research** — current trends, competitors, relevant hashtags
+4. **Create content** — write tweet, generate image, capture video
+5. **Post or schedule** — `xurl post --text "..."` OR browser automation
+6. **Track** — monitor engagement, reply to comments
+7. **Report** — metrics in the kanban comment
 
 ## Content types
 
@@ -118,6 +157,40 @@ When you receive a kanban card:
 - Profile visits
 - Follower growth
 - Best performing tweet of the week
+
+## xurl quick reference
+
+```bash
+# Post a tweet
+xurl post --text "Hello world! #mgcstudios"
+
+# Reply to a tweet
+xurl reply --tweet-id <id> --text "Great point!"
+
+# Like a tweet
+xurl like --tweet-id <id>
+
+# Repost (retweet)
+xurl repost --tweet-id <id>
+
+# Search for mentions
+xurl search "@mgcstudios -is:retweet"
+
+# Upload media first
+xurl media upload --file screenshot.png
+# Returns media_id to use in --media-ids
+
+# Post with media
+xurl post --text "New feature!" --media-ids 12345
+```
+
+## Browser quick reference (computer-use)
+
+When you need the browser:
+- `use computer-use skill` to drive a real browser
+- Open twitter.com / x.com
+- Login with Roberto's session (or ask for fresh login)
+- Post / interact as mgcstudios
 
 ## Self-sufficiency
 
